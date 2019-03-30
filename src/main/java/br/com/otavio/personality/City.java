@@ -1,6 +1,8 @@
 package br.com.otavio.personality;
 
 import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 
 import java.util.Objects;
 
@@ -8,6 +10,7 @@ public class City {
 
     private String name;
 
+    @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
     private Point point;
 
     public String getName() {
