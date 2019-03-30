@@ -65,6 +65,18 @@ public class Filter {
         return Optional.ofNullable(height);
     }
 
+    @Override
+    public String toString() {
+        return "Filter{" +
+                "photo=" + photo +
+                ", contact=" + contact +
+                ", favourite=" + favourite +
+                ", lowerBound=" + lowerBound +
+                ", score=" + score +
+                ", age=" + age +
+                ", height=" + height +
+                '}';
+    }
 
     public static FilterBuilder builder() {
         return new FilterBuilder();
@@ -111,17 +123,17 @@ public class Filter {
         }
 
         public FilterBuilder noPhoto() {
-            this.photo = true;
+            this.photo = false;
             return this;
         }
 
         public FilterBuilder noContact() {
-            this.contact = true;
+            this.contact = false;
             return this;
         }
 
         public FilterBuilder noFavourite() {
-            this.favourite = true;
+            this.favourite = false;
             return this;
         }
 
