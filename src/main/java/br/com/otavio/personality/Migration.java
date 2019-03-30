@@ -23,6 +23,7 @@ class Migration implements Supplier<List<Person>> {
     @Autowired
     private ObjectMapper objectMapper;
 
+
     private List<Person> people;
 
 

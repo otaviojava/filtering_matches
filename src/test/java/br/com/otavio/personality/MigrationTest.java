@@ -26,6 +26,7 @@ class MigrationTest {
         assertTrue(people.stream().map(Person::getScore).allMatch(Objects::nonNull));
         assertTrue(people.stream().map(Person::getContactsExchanged).allMatch(Objects::nonNull));
         assertTrue(people.stream().map(Person::getReligion).allMatch(Objects::nonNull));
+        assertTrue(people.stream().map(Person::getCity).allMatch(Objects::nonNull));
 
     }
 
