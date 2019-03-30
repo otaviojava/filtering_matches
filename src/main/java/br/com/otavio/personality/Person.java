@@ -139,44 +139,54 @@ public class Person {
         private PersonBuilder() {
         }
 
-        public void withName(String name) {
+        public PersonBuilder withName(String name) {
             this.name = name;
+            return this;
         }
 
-        public void withAge(Integer age) {
+        public PersonBuilder withAge(Integer age) {
             this.age = age;
+            return this;
         }
 
-        public void withJob(String job) {
+        public PersonBuilder withJob(String job) {
             this.job = job;
+            return this;
         }
 
-        public void withHeightCM(Integer heightCM) {
+        public PersonBuilder withHeightCM(Integer heightCM) {
             this.heightCM = heightCM;
+            return this;
         }
 
-        public void withCity(City city) {
+        public PersonBuilder withCity(City city) {
             this.city = city;
+            return this;
         }
 
-        public void withPhoto(String photo) {
+        public PersonBuilder withPhoto(String photo) {
             this.photo = photo;
+            return this;
         }
 
-        public void withScore(Double score) {
+        public PersonBuilder withScore(Double score) {
             this.score = score;
+            return this;
         }
 
-        public void withContactsExchanged(Integer contactsExchanged) {
+        public PersonBuilder withContactsExchanged(Integer contactsExchanged) {
             this.contactsExchanged = contactsExchanged;
+            return this;
         }
 
-        public void withFavourite(boolean favourite) {
+        public PersonBuilder withFavourite(boolean favourite) {
             this.favourite = favourite;
+            return this;
         }
 
-        public void withReligion(String religion) {
+        public PersonBuilder withReligion(String religion) {
             this.religion = religion;
+            return this;
         }
 
         public Person build() {
@@ -186,7 +196,7 @@ public class Person {
             person.job = Objects.requireNonNull(job, "job is required");
             person.heightCM = Objects.requireNonNull(heightCM, "heightCM is required");
             person.city = Objects.requireNonNull(city, "city is required");
-            person.photo = Objects.requireNonNull(photo, "photo is required");
+            person.photo = photo;
             person.score = Objects.requireNonNull(score, "score is required");
             person.contactsExchanged = Objects.requireNonNull(contactsExchanged, "contactsExchanged is required");
             person.favourite = Objects.requireNonNull(favourite, "favourite is required");
