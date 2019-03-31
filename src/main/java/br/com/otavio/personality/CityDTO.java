@@ -29,8 +29,8 @@ public class CityDTO {
         Point point = city.getPoint();
         CityDTO dto = new CityDTO();
         dto.name = city.getName();
-        dto.latitude = point.getX();
-        dto.longitude = point.getY();
+        dto.latitude = point.getY();
+        dto.longitude = point.getX();
         return dto;
     }
 
