@@ -2,6 +2,8 @@ package br.com.otavio.personality;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +25,9 @@ class Migration implements Supplier<List<Person>> {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private MongoTemplate template;
+
 
     private List<Person> people;
 
@@ -34,6 +39,12 @@ class Migration implements Supplier<List<Person>> {
         this.people = supplier.get().stream().map(PersonDTO::toPerson).collect(toList());
     }
 
+    void migrate() {
+        if (template.count(new Query(), Person.class) == 0) {
+            List<Person> people = get();
+            people.forEach(template::save);
+        }
+    }
 
     @Override
     public List<Person> get() {

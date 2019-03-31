@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Point;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -23,9 +21,6 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 class PersonSearchTest {
 
     @Autowired
-    private MongoTemplate template;
-
-    @Autowired
     private PersonSearch personSearch;
 
 
@@ -35,10 +30,7 @@ class PersonSearchTest {
 
     @BeforeEach
     public void setUp() {
-        if (template.count(new Query(), Person.class) == 0) {
-            List<Person> people = migration.get();
-            people.forEach(template::save);
-        }
+        migration.migrate();
 
     }
 
