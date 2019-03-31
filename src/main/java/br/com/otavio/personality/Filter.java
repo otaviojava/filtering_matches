@@ -164,7 +164,7 @@ public class Filter {
 
         public FilterBuilder withScore(Double score) {
             if (score != null && (score < SCORE_MIN || score > SCORE_MAX)) {
-                throw new IllegalArgumentException("Score is invalid");
+                throw new OutOfRangeException("Score is out of range");
             }
             this.score = score;
             return this;
@@ -173,7 +173,7 @@ public class Filter {
         public FilterBuilder withAge(Integer age) {
 
             if (age != null && (age < AGE_MIN || age > AGE_MAX)) {
-                throw new IllegalArgumentException("Age is invalid");
+                throw new OutOfRangeException("Age is out of range");
             }
 
             this.age = age;
@@ -184,7 +184,7 @@ public class Filter {
             this.height = height;
 
             if (height != null && (height < HEIGHT_MIN || height > HEIGHT_MAX)) {
-                throw new IllegalArgumentException("height is invalid");
+                throw new OutOfRangeException("height is out of range");
             }
             return this;
         }

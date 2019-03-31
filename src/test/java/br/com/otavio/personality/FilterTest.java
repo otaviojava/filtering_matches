@@ -10,21 +10,21 @@ class FilterTest {
 
 
     @Test
-    public void shouldReturnErrorWhenScoreIsInvalid() {
-        assertThrows(IllegalArgumentException.class, () -> Filter.builder().withScore(Filter.SCORE_MIN - 1));
-        assertThrows(IllegalArgumentException.class, () -> Filter.builder().withScore(Filter.SCORE_MAX + 1));
+    public void shouldReturnErrorWhenScoreIsOutOfRange() {
+        assertThrows(OutOfRangeException.class, () -> Filter.builder().withScore(Filter.SCORE_MIN - 1));
+        assertThrows(OutOfRangeException.class, () -> Filter.builder().withScore(Filter.SCORE_MAX + 1));
     }
 
     @Test
-    public void shouldReturnErrorAgeIsInvalid() {
-        assertThrows(IllegalArgumentException.class, () -> Filter.builder().withAge(Filter.AGE_MIN - 1));
-        assertThrows(IllegalArgumentException.class, () -> Filter.builder().withAge(Filter.AGE_MAX + 1));
+    public void shouldReturnErrorAgeIsOutOfRange() {
+        assertThrows(OutOfRangeException.class, () -> Filter.builder().withAge(Filter.AGE_MIN - 1));
+        assertThrows(OutOfRangeException.class, () -> Filter.builder().withAge(Filter.AGE_MAX + 1));
     }
 
     @Test
-    public void shouldReturnErrorHeightIsInvalid() {
-        assertThrows(IllegalArgumentException.class, () -> Filter.builder().withHeight(Filter.HEIGHT_MIN - 1));
-        assertThrows(IllegalArgumentException.class, () -> Filter.builder().withHeight(Filter.HEIGHT_MAX + 1));
+    public void shouldReturnErrorHeightIsOutOfRange() {
+        assertThrows(OutOfRangeException.class, () -> Filter.builder().withHeight(Filter.HEIGHT_MIN - 1));
+        assertThrows(OutOfRangeException.class, () -> Filter.builder().withHeight(Filter.HEIGHT_MAX + 1));
     }
 
 
