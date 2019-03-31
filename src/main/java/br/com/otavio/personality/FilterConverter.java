@@ -5,13 +5,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Component
-class MapperConverter implements Function<Map<String, String>, Filter> {
-
-    private static final Logger LOGGER = Logger.getLogger(MapperConverter.class.getName());
+class FilterConverter implements Function<Map<String, String>, Filter> {
 
     @Override
     public Filter apply(Map<String, String> params) {
@@ -20,8 +16,9 @@ class MapperConverter implements Function<Map<String, String>, Filter> {
         boolean favourite = toBoolean(params, "favourite");
         boolean lowerBound = toBoolean(params, "lowerBound");
         Double score = toDouble(params, "score");
-        Integer age = toInt(params, "score");
+        Integer age = toInt(params, "age");
         Integer height = toInt(params, "height");
+
 
         return Filter.builder().withPhoto(photo)
                 .withContact(contact)
@@ -40,8 +37,7 @@ class MapperConverter implements Function<Map<String, String>, Filter> {
         try {
             return Optional.ofNullable(params.get(key)).map(Double::parseDouble).orElse(null);
         } catch (NumberFormatException exp) {
-            LOGGER.log(Level.FINEST, "Skipping this to handle with a perfect path", exp);
-            return null;
+            throw new InvalidQueryParamException();
         }
     }
 
@@ -49,8 +45,7 @@ class MapperConverter implements Function<Map<String, String>, Filter> {
         try {
             return Optional.ofNullable(params.get(key)).map(Integer::parseInt).orElse(null);
         } catch (NumberFormatException exp) {
-            LOGGER.log(Level.FINEST, "Skipping this to handle with a perfect path", exp);
-            return null;
+            throw new InvalidQueryParamException();
         }
     }
 }
