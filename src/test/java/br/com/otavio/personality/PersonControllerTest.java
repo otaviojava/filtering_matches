@@ -2,7 +2,6 @@ package br.com.otavio.personality;
 
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,16 +35,6 @@ class PersonControllerTest {
 
     @LocalServerPort
     private int port;
-
-    @Autowired
-    private Migration migration;
-
-
-    @BeforeEach
-    public void setUp() {
-        migration.migrate();
-
-    }
 
 
     @Test

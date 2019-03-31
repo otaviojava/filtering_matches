@@ -1,6 +1,7 @@
 package br.com.otavio.personality;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -16,7 +17,7 @@ import java.util.function.Supplier;
 import static java.util.stream.Collectors.toList;
 
 @Component
-class Migration implements Supplier<List<Person>> {
+class Migration implements Supplier<List<Person>>, InitializingBean {
 
 
     private static final String URL_PATH = "database/matches.json";
@@ -49,5 +50,10 @@ class Migration implements Supplier<List<Person>> {
     @Override
     public List<Person> get() {
         return Collections.unmodifiableList(people);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        migrate();
     }
 }

@@ -24,16 +24,6 @@ class PersonSearchTest {
     private PersonSearch personSearch;
 
 
-    @Autowired
-    private Migration migration;
-
-
-    @BeforeEach
-    public void setUp() {
-        migration.migrate();
-
-    }
-
     @Test
     @DisplayName("Should do a search using no photo, not favourite and not contacts")
     public void shouldFilterNotPhoto() {
