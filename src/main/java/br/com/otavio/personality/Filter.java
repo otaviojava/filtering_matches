@@ -107,13 +107,33 @@ public class Filter {
             return this;
         }
 
+        public FilterBuilder withPhoto(boolean photo) {
+            this.photo = photo;
+            return this;
+        }
+
         public FilterBuilder withContact() {
             this.contact = true;
             return this;
         }
 
+        public FilterBuilder withContact(boolean contact) {
+            this.contact = contact;
+            return this;
+        }
+
         public FilterBuilder withFavourite() {
             this.favourite = true;
+            return this;
+        }
+
+        public FilterBuilder withFavourite(boolean favourite) {
+            this.favourite = favourite;
+            return this;
+        }
+
+        public FilterBuilder withLowerBound(boolean lowerBound) {
+            this.lowerBound = lowerBound;
             return this;
         }
 
@@ -172,5 +192,8 @@ public class Filter {
         public Filter build() {
             return new Filter(photo, contact, favourite, lowerBound, score, age, height);
         }
+
+
     }
+
 }

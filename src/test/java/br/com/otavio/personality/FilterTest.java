@@ -45,9 +45,9 @@ class FilterTest {
         assertTrue(filter.isFavourite());
         assertTrue(filter.isContact());
 
-        assertEquals(150, filter.getHeight());
-        assertEquals(30, filter.getAge());
-        assertEquals(10D, filter.getScore());
+        assertEquals(150, filter.getHeight().get());
+        assertEquals(30, filter.getAge().get());
+        assertEquals(10D, filter.getScore().get());
 
 
     }
