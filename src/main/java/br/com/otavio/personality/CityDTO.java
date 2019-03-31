@@ -18,11 +18,20 @@ public class CityDTO {
     @JsonProperty("lon")
     private double longitude;
 
-
     public City toCity() {
         return City.builder()
                 .withName(name)
                 .withPoint(new Point(longitude, latitude))
                 .build();
     }
+
+    public static CityDTO of(City city) {
+        Point point = city.getPoint();
+        CityDTO dto = new CityDTO();
+        dto.name = city.getName();
+        dto.latitude = point.getX();
+        dto.longitude = point.getY();
+        return dto;
+    }
+
 }

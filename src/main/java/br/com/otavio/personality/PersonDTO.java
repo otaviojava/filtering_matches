@@ -69,4 +69,20 @@ public class PersonDTO {
                 .withCity(city.toCity())
                 .build();
     }
+
+    public static PersonDTO of(Person person) {
+        PersonDTO dto = new PersonDTO();
+        dto.name = person.getName();
+        dto.age = person.getAge();
+        dto.job = person.getJob();
+        dto.heightCM = person.getHeightCM();
+        dto.photo= person.getPhoto();
+        dto.score = person.getScore();
+        dto.contactsExchanged = person.getContactsExchanged();
+        dto.favourite = person.isFavourite();
+        dto.religion = person.getReligion();
+        dto.city = CityDTO.of(person.getCity());
+
+        return dto;
+    }
 }
