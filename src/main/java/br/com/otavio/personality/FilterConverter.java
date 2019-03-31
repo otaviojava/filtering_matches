@@ -37,7 +37,7 @@ class FilterConverter implements Function<Map<String, String>, Filter> {
         try {
             return Optional.ofNullable(params.get(key)).map(Double::parseDouble).orElse(null);
         } catch (NumberFormatException exp) {
-            throw new InvalidQueryParamException();
+            throw new InvalidQueryParamException(key);
         }
     }
 
@@ -45,7 +45,7 @@ class FilterConverter implements Function<Map<String, String>, Filter> {
         try {
             return Optional.ofNullable(params.get(key)).map(Integer::parseInt).orElse(null);
         } catch (NumberFormatException exp) {
-            throw new InvalidQueryParamException();
+            throw new InvalidQueryParamException(key);
         }
     }
 }
