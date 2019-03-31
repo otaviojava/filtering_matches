@@ -32,10 +32,6 @@ public class Person {
     private String religion;
 
 
-    public String getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
@@ -196,11 +192,11 @@ public class Person {
             person.job = Objects.requireNonNull(job, "job is required");
             person.heightCM = Objects.requireNonNull(heightCM, "heightCM is required");
             person.city = Objects.requireNonNull(city, "city is required");
-            person.photo = photo;
             person.score = Objects.requireNonNull(score, "score is required");
             person.contactsExchanged = Objects.requireNonNull(contactsExchanged, "contactsExchanged is required");
-            person.favourite = Objects.requireNonNull(favourite, "favourite is required");
             person.religion = Objects.requireNonNull(religion, "religion is required");
+            person.photo = photo;
+            person.favourite = favourite;
             return person;
         }
     }

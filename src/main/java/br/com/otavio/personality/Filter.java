@@ -147,21 +147,6 @@ public class Filter {
             return this;
         }
 
-        public FilterBuilder noContact() {
-            this.contact = false;
-            return this;
-        }
-
-        public FilterBuilder noFavourite() {
-            this.favourite = false;
-            return this;
-        }
-
-        public FilterBuilder upperBound() {
-            this.lowerBound = false;
-            return this;
-        }
-
         public FilterBuilder withScore(Double score) {
             if (score != null && (score < SCORE_MIN || score > SCORE_MAX)) {
                 throw new OutOfRangeException("Score is out of range");

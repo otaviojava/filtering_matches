@@ -1,6 +1,5 @@
 package br.com.otavio.personality;
 
-import org.apache.catalina.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,8 +8,6 @@ import org.springframework.data.geo.Point;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserPointConverterTest {
 
@@ -44,8 +41,6 @@ class UserPointConverterTest {
 
     @Test
     public void shouldReturnErrorWhenThereIsAValueMissing() {
-        Map<String, String> header = new HashMap<>();
-        header.put("lat", "12.2");
         Assertions.assertThrows(MissingUserInformationException.class, () -> converter.apply(Collections.emptyMap()));
     }
 
@@ -53,7 +48,7 @@ class UserPointConverterTest {
     public void shouldReturnErrorWhenValueIsInvalid() {
         Map<String, String> header = new HashMap<>();
         header.put("lat", "invalid_value");
-        Assertions.assertThrows(MissingUserInformationException.class, () -> converter.apply(Collections.emptyMap()));
+        Assertions.assertThrows(MissingUserInformationException.class, () -> converter.apply(header));
     }
 
 
