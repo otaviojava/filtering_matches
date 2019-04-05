@@ -25,7 +25,7 @@ public class PersonController {
     private UserPointConverter userPointConverter;
 
     @GetMapping(value = "/people", produces = "application/json")
-    public List<PersonDTO> greeting(@RequestParam Map<String, String> params,
+    public List<PersonDTO> find(@RequestParam Map<String, String> params,
                                     @RequestHeader Map<String, String> header) {
 
         Point point = userPointConverter.apply(header);
